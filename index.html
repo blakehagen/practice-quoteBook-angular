@@ -9,12 +9,28 @@
 </head>
 
 <body ng-controller="mainCtrl">
-	<div>
-		<h1>QuoteBook</h1>
-	</div>
-	<div ng-repeat="quote in quotes">
-		<p>"{{quote.text}}"</p>
-		<p>-- {{quote.author}}</p>
+	<div class="wrapper">
+		<div>
+			<h1>QuoteBook</h1>
+		</div>
+		<div>
+			<input type="text" placeholder="Add Quote" ng-model="quoteData"></input>
+			<input type="text" placeholder="Add Author" ng-model="authorData"></input>
+			<button ng-click="addQuote()">Add Quote</button>
+		</div>
+		<div>
+			<input type="text" placeholder="Remove Quote" ng-model="old"></input>
+			<button ng-click="removeQuote()">Remove Quote</button>
+		</div>
+		<div>
+			<input type="text" placeholder="Filter Quotes" ng-model="filterData"></input>
+			<button ng-click="filter">Filter Quotes</button>
+		</div>
+
+		<div ng-repeat="quote in quotes | filter: filterData ">
+			<p>"{{quote.text}}"</p>
+			<p class="indent">-- {{quote.author}}</p>
+		</div>
 	</div>
 
 

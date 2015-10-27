@@ -1,0 +1,17 @@
+.wrapper {
+	width: 70%;
+	margin: 0 auto;
+	/*border: 1px solid red;*/
+}
+
+h1 {
+	margin: 40px 0 20px 0;
+}
+
+.indent {
+	margin-left: 70px;
+}
+
+button {
+	margin-bottom: 10px;
+}

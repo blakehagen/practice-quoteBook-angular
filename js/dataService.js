@@ -21,10 +21,10 @@ angular.module('quoteBook')
 			}
 		};
 
-		this.removeData = function (quote) {
-			for (text in quotes) {
-				if (quote === quotes.text) {
-					delete text;
+		this.removeData = function (text) {
+			for (var i = 0; i < quotes.length; i++) {
+				if (quotes[i].text === text) {
+					quotes.splice(i, 1);
 				}
 			}
 		};
