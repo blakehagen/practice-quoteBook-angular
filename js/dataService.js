@@ -10,23 +10,44 @@ angular.module('quoteBook')
 			{ text: 'Life is what happens to you while you\'re busy making other plans.', author: 'John Lennon' },
 			{ text: 'What even is a jQuery?', author: 'Tyler S. McGinnis' }
 		];
+		
+		// GET QUOTES //
 
 		this.getData = function () {
-			return quotes;
-		};
 
-		this.addData = function (obj) {
-			if (obj.text && obj.author) {
-				quotes.push(obj);
+			if (!localStorage.quotes) {
+				return quotes;
 			}
+			return JSON.parse(localStorage.quotes);
 		};
+		
+		// REMOVE QUOTE //
 
 		this.removeData = function (text) {
+
 			for (var i = 0; i < quotes.length; i++) {
 				if (quotes[i].text === text) {
 					quotes.splice(i, 1);
 				}
 			}
+			console.log(quotes);
+			localStorage.setItem("quotes", JSON.stringify(quotes));
+			// remove quote from localStorage //
+			// localStorage.quotes = JSON.parse(localStorage.quotes);
+			// console.log(localStorage.quotes);
+			// for (var j = 0; j < localStorage.quotes.length; j++) {
+			// 	if (localStorage.quotes[j].text === text) {
+			// 		localStorage.quotes.splice(j, 1);
+			// 	}
+			// }
+		};
+		
+		// ADD TO LOCAL STORAGE //
+
+		this.addData = function (obj) {
+			quotes.push(obj);
+			localStorage.setItem("quotes", JSON.stringify(quotes));
+			
 		};
 
 
