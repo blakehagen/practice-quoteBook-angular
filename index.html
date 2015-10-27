@@ -14,17 +14,22 @@
 			<h1>QuoteBook</h1>
 		</div>
 		<div>
+			<button ng-click="closeButtonsAdd() ; toggleAdd = !toggleAdd">Add Quote</button>
+			<button ng-click="closeButtonsRemove() ; toggleRemove = !toggleRemove">Remove Quote</button>
+			<button ng-click="closeButtonsFilter() ; toggleFilter = !toggleFilter">Filter Quotes</button>
+
+		</div>
+		<div ng-show="toggleAdd">
 			<input type="text" placeholder="Add Quote" ng-model="quoteData"></input>
 			<input type="text" placeholder="Add Author" ng-model="authorData"></input>
 			<button ng-click="addQuote()">Add Quote</button>
 		</div>
-		<div>
+		<div ng-show="toggleRemove">
 			<input type="text" placeholder="Remove Quote" ng-model="old"></input>
 			<button ng-click="removeQuote()">Remove Quote</button>
 		</div>
-		<div>
+		<div ng-show="toggleFilter">
 			<input type="text" placeholder="Filter Quotes" ng-model="filterData"></input>
-			<button ng-click="filter">Filter Quotes</button>
 		</div>
 
 		<div ng-repeat="quote in quotes | filter: filterData ">
